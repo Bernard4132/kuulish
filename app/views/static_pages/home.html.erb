@@ -1,0 +1,244 @@
+<% if signed_in? %>
+
+<h1>Hello</h1>
+<%= current_user.email %>
+
+
+
+
+
+
+
+
+<% else %>
+
+<style type="text/css">
+	
+.homemainsect {
+	background:linear-gradient(0deg,rgba(255, 138, 0,0),rgba(255, 138, 0,0)),url(https://res.cloudinary.com/nikasemo/image/upload/v1577488310/coolparent2_njlrkk.jpg);
+	height: 100vh;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+}
+
+.holdhomeshift {
+	padding-top: 200px;
+	font-family: 'Muli', sans-serif;
+}
+
+.navbackground {
+  background-color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+-moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+}
+
+.navbar-brand1 {
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+
+
+
+.navbar-light .navbar-brand1{
+
+font-weight: 700;
+font-family: 'Muli', sans-serif;
+}
+
+.navbar-scroll{
+color: #000; 
+font-weight: 700;
+font-family: 'Muli', sans-serif;
+}
+
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+  color: white;
+}
+
+.navbar-light .navbar-scroll:focus, .navbar-light .navbar-scroll:hover {
+  color: #343a40;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #FF8C04;
+  font-weight: 400;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 16px;
+  transition: border-color .5s ease-in-out;
+    -webkit-transition: border-color .5s ease-in-out;
+    -moz-transition: border-color .5s ease-in-out;
+  border-bottom: 4px solid transparent;
+}
+
+.navlinkscroll{
+  color: #343a40;
+  
+}
+
+.navbar-light .navbar-nav .nav-link:focus {
+  color: #f17100;
+  font-weight: 700;
+  /*border-bottom-color:#f17100;*/
+}
+
+ .navbar-light .navbar-nav .nav-link:hover {
+  color: #f17100;
+  font-weight: 700;
+  
+}
+
+.navbar-light .navbar-nav .nav-link.disabled {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active {
+  color: #f17100;
+  font-weight: 800;
+  border: 2px solid #f17100;
+  padding: 7px;
+  border-radius: 12px;
+}
+
+.holdhomebtn {
+  background-color: #ffffff;
+  color: #f17100;
+  width: 300px; 
+  border: 1px solid #ffffff; 
+  border-radius: 4px;
+  font-weight: 700;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+-moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+}
+
+.holdintrohometext {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  color: #ffffff; 
+  font-size: 14px; 
+  line-height: 28px;
+}
+
+.welcomet {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+</style>
+<header>
+<nav class="navbar navbar-light navbar-expand-lg fixed-top navbackground dottt" style="z-index: 9999;">
+      <div class="container navbodyhold">
+        <a class="navbar-brand1" href="/" style=""><img src="https://res.cloudinary.com/nikasemo/image/upload/v1577479263/kuulisklogo_g5vzal.png" style="height: 100%; margin-right:5px; height: 25px;"></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar top-bar"></span>
+          <span class="icon-bar middle-bar"></span>
+          <span class="icon-bar bottom-bar"></span>
+        </button>
+        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar top-bar"></span>
+          <span class="icon-bar middle-bar"></span>
+          <span class="icon-bar bottom-bar"></span>
+        </button> -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+        
+            <li class="nav-item">
+              <a class="nav-link" href="/aboutus">Members</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/completedprojects">Top Communities</a>
+            </li>
+            
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" id="changecolor2" href="/aboutus">
+                <i class="fa fa-pencil-square-o" aria-hidden="true" style="margin-right: 7px;"></i> Blogs
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="changecolor2" href="/aboutus">
+                <i class="fa fa-users" aria-hidden="true" style="margin-right: 7px;"></i> Community
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="changecolor2" href="/users/sign_in">
+                <i class="fa fa-sign-in" aria-hidden="true" style="margin-right: 7px;"></i> Sign In
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id="changecolor2" href="/users/sign_up">
+                <i class="fa fa-sign-out" aria-hidden="true" style="margin-right: 7px;"></i> Sign Up
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+</header>
+
+    <section class="homemainsect">
+    	<div class="container">
+    		<div class="row holdhomeshift">
+    			<div class="col-lg-5">
+    			<div class="holdintrotextdone">
+            <h1 class="welcomet" style="color: #ffffff;">Welcome to Kuulish!</h1><br>
+    				<p style="" class="holdintrohometext">
+    					On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and.
+    				<br><br>
+    				demoralized by the charms of pleasure of the
+    				</p>
+    				<br>
+    				<p>
+    					<a href="/users/sign_up" class="btn btn-primary holdhomebtn" style="">Join our Community<i class="fa fa-chevron-right" aria-hidden="true" style="margin-left: 30px;"></i></a>
+    				</p>
+            <br>
+            <p style="color: white; font-size: 14px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">
+              Already a member? Click <a style="color: white;" href="/users/sign_in"><u>here</u></a> to Login
+            </p>
+    			</div>
+    		</div>
+    		<div class="col-lg-6">
+    			<div class="holdformhome">
+    				
+
+
+    			</div>
+    		</div>
+    		</div>
+    	</div>
+    </section>
+
+
+<% end %>

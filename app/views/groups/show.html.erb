@@ -1,0 +1,136 @@
+<p id="notice"><%= notice %></p>
+
+ <%= form_tag(memberships_path, :method=>'POST') do %>
+  <%= hidden_field_tag :group_id, @group.id %>
+ <%= submit_tag "Join Group", :class => "btn btn-success"  %>
+<% end %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @group.description %>
+</p>
+
+<p>
+  <strong>Groupcoverimage:</strong>
+  <%= @group.groupcoverimage %>
+</p>
+
+<p>
+  <strong>Groupprofile:</strong>
+  <%= @group.groupprofile %>
+</p>
+
+<hr>
+<h4>Write new post!</h4>
+<%= form_for(@post) do |f| %>
+<%= hidden_field_tag :group_id, @group.id %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postimage %>
+    <%= f.text_field :postimage %>
+  </div>
+
+  <div class="field" style="display: none;">
+    <%= f.label :group_id %>
+    <%= f.number_field :group_id, :value => "#{@group.id}" %>
+  </div>
+
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<br>
+<hr>
+Number of posts: <%= @group.posts.count %>
+<br>
+<% @group.posts.find_each do |post| %>
+<p>
+  <%= post.body %>
+</p>
+<% end %>
+
+<hr><hr>
+
+<%= form_for(@blog) do |f| %>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+      <% @blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bodydescrip %>
+    <%= f.text_area :bodydescrip %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :blogimage %>
+    <%= f.text_field :blogimage %>
+  </div>
+
+  <div class="field">
+    <%= f.label :group_id %>
+    <%= f.number_field :group_id, :value => "#{@group.id}" %>
+  </div>
+
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<br>
+<hr>
+Number of Blogs: <%= @group.blogs.count %>
+<br>
+<% @group.blogs.find_each do |blog| %>
+<p>
+  <%= blog.title %>
+</p>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

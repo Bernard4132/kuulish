@@ -1,0 +1,27 @@
+<%= form_for(blogcomment) do |f| %>
+  <% if blogcomment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blogcomment.errors.count, "error") %> prohibited this blogcomment from being saved:</h2>
+
+      <ul>
+      <% blogcomment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bolg_id %>
+    <%= f.number_field :bolg_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

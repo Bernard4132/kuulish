@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kuulish</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://use.fontawesome.com/fc6d352727.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Muli|Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  </head>
+
+  <body>
+
+  	<% if signed_in? %>
+
+    <style type="text/css">
+      
+      /*
+    DEMO STYLE
+*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #000000;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+ 
+.navbar {
+    padding: 3px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    /*box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);*/
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+i,
+span {
+    display: inline-block;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #f17100;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    min-width: 80px;
+    max-width: 80px;
+    text-align: center;
+}
+
+#sidebar.active .sidebar-header h3,
+#sidebar.active .CTAs {
+    display: none;
+}
+
+#sidebar.active .sidebar-header strong {
+    display: block;
+}
+
+#sidebar ul li a {
+    text-align: left;
+}
+
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+#sidebar.active ul li a i {
+    margin-right: 0;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
+
+#sidebar.active .dropdown-toggle::after {
+    top: auto;
+    bottom: 10px;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: rgba(216,216,216, 0.1);
+}
+
+#sidebar .sidebar-header strong {
+    display: none;
+    font-size: 1.8em;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #ffffff;
+}
+
+#sidebar ul li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: #fff000;
+    background: rgba(216,216,216, 0.1);
+}
+
+#sidebar ul li a i {
+    margin-right: 10px;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: rgba(216,216,216, 0.1);
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 12px !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        min-width: 80px;
+        max-width: 80px;
+        text-align: center;
+        margin-left: -80px !important;
+    }
+    .dropdown-toggle::after {
+        top: auto;
+        bottom: 10px;
+        right: 50%;
+        -webkit-transform: translateX(50%);
+        -ms-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+    #sidebar.active {
+        margin-left: 0 !important;
+    }
+    #sidebar .sidebar-header h3,
+    #sidebar .CTAs {
+        display: none;
+    }
+    #sidebar .sidebar-header strong {
+        display: block;
+    }
+    #sidebar ul li a {
+        padding: 10px 5px;
+    }
+    #sidebar ul li a span {
+        font-size: 0.85em;
+    }
+    #sidebar ul li a i {
+        margin-right: 0;
+        display: block;
+    }
+    #sidebar ul ul a {
+        padding: 10px !important;
+    }
+    #sidebar ul li a i {
+        font-size: 1.3em;
+    }
+    #sidebar {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+
+    </style>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+
+      .navbagrnd{
+        background-color: #ffffff;
+         -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+    border-radius: 2px;
+      }
+
+    </style>
+
+    
+<div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3 style="text-align: center;"><img src="https://res.cloudinary.com/nikasemo/image/upload/v1577688990/KUULISH_q4gix2.png" style="width: 100px"></h3>
+                <strong><img src="https://res.cloudinary.com/nikasemo/image/upload/v1577736169/logokuulishk_lqimz0.png" style="height: 25px;"></strong>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="/">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1537358929/progressme_qaonfp.png" style="height: 25px;">
+                        Progress
+                    </a>
+                </li>
+                <li>
+                    <a href="/topics">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1537358929/module_l8w46g.png" style="height: 25px;">
+                        Learning
+                    </a>
+                </li>
+                <li>
+                    <a href="/contests">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1551030999/contestsiconbbar_copy_sdvrto.png" style="height: 25px;">
+                        Contests
+                    </a>
+                </li>
+                <li>
+                    <a href="/gifts">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1537358929/giftrewards_xcftxb.png" style="height: 25px;">
+                        GiftShop
+                    </a>
+                </li>
+                <li>
+                    <a href="/subscribenow">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1537358929/subscribeicon_msx3ax.png" style="height: 25px;">
+                        Subscribe
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled components">
+              <li>
+                <a href="#">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1537358929/settingsicon111_ntksiu.png" style="height: 25px;">
+                        Settings
+                    </a>
+              </li>
+               <li>
+               <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :style => "color: white; font-weight: 300; font-size: 14px; text-decoration:none;" %>
+              </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light navbagrnd">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color: #ffffff; color: #0080ff; border: 0;">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1537359368/drawerhideandreveal_tinkv2.png" style="height: 16px;">
+                        
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                  <img src="https://res.cloudinary.com/nikasemo/image/upload/v1537358929/notibellnewtest_rmbzwr.png" style="height: 25px;">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                  <img src="https://res.cloudinary.com/nikasemo/image/upload/v1537358929/man_2_detoi5.png" style="height: 25px;">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                  <img src="https://res.cloudinary.com/nikasemo/image/upload/v1537358929/settingsicon1_m5174p.png" style="height: 25px;">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            
+
+            <style>
+              .backbtn {
+                  background-color: #d8d8d8;
+                  border: 1px solid #9fa1a3;
+                  color: #000000;
+                  margin-bottom: 10px;
+                  font-weight: 500;
+              }
+            </style>
+
+              
+             
+
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                    <% if notice %>
+<div class="alert alert-success alert-dismissible" style="position: absolute; top: 100px; left: 10px; z-index: 999;" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <p class="notice"><%= notice %></p>
+</div>
+<% end %>
+                    <%= yield %>
+
+                </div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+
+
+
+  	<% else %>
+
+ 
+ <%= yield %>
+
+  	<% end %>
+
+
+   
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  </body>
+</html>
