@@ -1,7 +1,1035 @@
 <% if signed_in? %>
 
-<h1>Hello</h1>
-<%= current_user.email %>
+<title>Kuulish | Join Kool Parents. Let's share what's going on!</title>
+<meta name="description" content="Well more like cool -ish! We all find it hard to keep up with new trends, dances, entertainment and even names for the things we did (that our parents hated) when we were young.">
+      <meta name="author" content="kuulish.com">
+      <meta property="og:title" content="Join Kool Parents. Let's share what's going on!">
+      <meta property="og:description" content="Well more like cool -ish! We all find it hard to keep up with new trends, dances, entertainment and even names for the things we did (that our parents hated) when we were young.">
+      <meta property="og:url" content="http://www.kuulish.com" />
+     <meta property="og:image" content="https://res.cloudinary.com/nikasemo/image/upload/v1577488310/coolparent2_njlrkk.jpg" />
+
+<style type="text/css">
+  
+  .holdgrouppartial {
+    background:linear-gradient(0deg,rgba(0, 0, 0,0.7),rgba(0, 0, 0,0.7)),url(https://res.cloudinary.com/nikasemo/image/upload/v1577869310/green-leaves-pattern_diana-toledano_h5faho.png);
+    background-position:center;
+    height: 150px;
+    width: 90%;
+    border-radius: 25px;
+    padding: 15px;
+  }
+
+  .holdpostholder {
+    margin-top: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+-moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+  }
+
+  .holdmembersholder {
+    margin-top: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding-right: 20px;
+    padding-left: 3px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+-moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+  }
+
+  .holdpollholder {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+-moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+  }
+
+  .holdshareholder {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 7px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+-moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+  }
+
+  .holdshareholder1 {
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding-top: 20px;
+    padding-bottom: 7px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+-moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+  }
+
+  .topcompoststop {
+    color: #f17100;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .topcompoststop1 {
+    color: #f17100;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 30px;
+  }
+
+  .blogimage {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .btnreadb {
+    background-color: #f17100;
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+  }
+
+ /* Poll Radio buttons*/
+
+ .labelcontainer {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 0px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.labelcontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  margin-bottom: 10px;
+  background-color: #bab6b6;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.labelcontainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.labelcontainer input:checked ~ .checkmark {
+  background-color: #f17100;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.labelcontainer input:checked ~ .checkmark:after {
+  display: none;
+}
+
+/* Style the indicator (dot/circle) */
+.labelcontainer .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.select-css {
+    display: block;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #444;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: 100%;
+    max-width: 100%; 
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: .5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+      linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
+.select-css::-ms-expand {
+    display: none;
+}
+.select-css:hover {
+    border-color: #888;
+}
+.select-css:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222; 
+    outline: none;
+}
+.select-css option {
+    font-weight:normal;
+}
+
+.holdpollbtns {
+  margin-top: 20px;
+}
+
+.pollsubmit {
+  background-color: #f17100;
+  border: none;
+  color: #ffffff;
+  border-radius: 15px;
+}
+
+.ffmemberbtn {
+  background-color: transparent;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #f17100;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtn:hover {
+  background-color: transparent;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #f17100;
+  font-size: 12px;
+  border-radius: 15px;
+}
+.ffmemberbtn:active {
+  background-color: transparent;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #f17100;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtnfollowed {
+  background-color: #f17100;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtnfollowed:active {
+  background-color: #f17100;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtnfollowed:active {
+  background-color: #f17100;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.linkedinhomesharebtn {
+  width: 100%;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #0F78B9;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 12px;
+}
+
+.fbhomesharebtn {
+  width: 100%;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #3B5999;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 12px;
+}
+
+.twitterhomesharebtn {
+  width: 100%;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #00ACEE;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 12px;
+}
+
+</style>
+
+
+  <div class="row no-gutters">
+    <div class="col-lg-6" style="padding-left: 0px; padding-right: 30px;">
+
+      <div class="row">
+        <div class="col-lg-12">
+          <p class="topcompoststop">Top Communities</p>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-12">
+          <div class="row no-gutters">
+           <% Group.last(3).find_all do |group| %>
+
+            <div class="col-lg-4 col-4">
+              <div class="holdgrouppartial">
+                <br>
+                <p style="text-align: center;">
+                  <span style="color: #ffffff; font-weight: 500;"><%= group.name %></span>
+                <br>
+                  <%= link_to "Join Group", memberships_path(group_id: group.id), method: :post, :class => "btn btn-primary",
+              :style => "background-color: #ffffff; color: #f17100; border: 1px solid #f17100; border-radius: 20px; font-size: 11px; padding: 7px; margin-top: 10px; font-weight: 600;" %>
+            </p>
+                </p>
+              </div>
+            </div>
+
+           <% end %>
+
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+
+          <div class="row">
+            <div class="col-lg-12">
+              <p class="topcompoststop1">Top Community Posts</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-lg-12">
+
+          <div class="row">
+<% Post.all.find_each do |post| %>
+
+ <!-- Post Begin -->
+
+    
+      
+          <div class="col-lg-12">
+
+
+            <div class="holdpostholder">
+              <div class="row">
+
+                    <!-- Top header -->
+                    <div class="col-lg-12">
+                      
+                      <div class="row">
+
+                        <div class="col-lg-2 col-2">
+                          <div class="holdimage">
+                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid" width="80px" height="80px">
+                          </div>
+                        </div>
+                        <div class="col-lg-7 col-7">
+                          <div class="holdposttitle" style="line-height: 16px;">
+                            <span style="font-weight: 600; font-size: 14px;">
+                            <%= post.body %>
+                            </span>
+                            <br>
+                            <span style="font-weight: 700; font-size: 10px; color: #dddddd;">
+                            Posted by: <%= post.user.email %>
+                          </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-3">
+                          <% if signed_in? %>
+            
+                          <% if post.marked_as? :postlike, :by => current_user %>
+                              <a href="" class="btn brightgreenbtn" style="margin-left: 5px;">
+                                <i class="fa fa-heart" style="color: #f17100;" aria-hidden="true"></i>
+                              </a>
+                            <% else %>
+                              <%= link_to '<i class="fa fa-heart"  style="color: #979797;" aria-hidden="true"></i>'.html_safe, postlike_post_path(post), method: :post, :class => "btn brightbluestrokedbtn", :style => "margin-left: 5px;" %>
+                            <% end %>       
+                       
+                        <% else %>
+                          <a href="/users/sign_in" class="btn brightbluestrokedbtn" style="margin-left: 5px;"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        <% end %>
+
+                          <span><%= post.users_have_marked_as_postlike.count %> +</span>
+                        </div>
+
+                      </div>
+                    </div>
+                    
+                   <!--  Post Content -->
+                    <div class="col-lg-12">
+                      <div class="blogimage">
+                        <% if post.postvideo.present? %>
+                          <video width="100%" height="300px" controls>
+                          <source src="<%= post.postvideo %>">
+                          Your browser does not support the video tag.
+                      </video>
+                        <% end %>
+
+                        <% if post.postimage.present? %>
+                          <img src="<%= post.postimage %>" class="img-fluid">
+                        <% end %>
+                      </div>
+                      <!-- <p style="text-align: right; margin-top: 20px;">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829070/like_3_copy_ay0ic2.png" 
+                        width="25px" height="25px">
+                        <a href="" class="btn btn-primary btnreadb">Read Post</a>
+                      </p> -->
+                    </div>
+
+                <!-- Comment was here -->
+
+                  <div class="col-lg-12">
+                  <div class="row">
+                    <div class="col-lg-12">
+                        <p class="topcompoststop">Comments</p>
+                        <%= form_for(@postcomment) do |f| %>
+                          <% if @postcomment.errors.any? %>
+                            <div id="error_explanation">
+                              <h2><%= pluralize(@postcomment.errors.count, "error") %> prohibited this postcomment from being saved:</h2>
+
+                              <ul>
+                              <% @postcomment.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                              <% end %>
+                              </ul>
+                            </div>
+                          <% end %>
+
+                          <div class="form-group">
+                            <%= f.text_area :body, :class => "form-control", :placeholder => "Enter your comments" %>
+                          </div>
+
+                          <div class="field" style="display: none;">
+                            <%= f.label :post_id %>
+                            <%= f.number_field :post_id, :value => post.id %>
+                          </div>
+
+                          <div class="field" style="display: none;">
+                            <%= f.label :user_id %>
+                            <%= f.number_field :user_id, :value => current_user.id %>
+                          </div>
+                          <p style="margin-top: 20px;"><button class="btn btn-primary" style="width: 100%;">Add your comment</button></p>
+                          
+                        <% end %>
+                        
+                        
+                    </div>
+                  </div>
+                  <!-- Comments row -->
+                  <div class="row">
+                    
+                    <% post.postcomments.find_each do |postcomment| %>
+
+                      <div class="col-lg-12" style="margin-top: 10px;">
+                        <div class="row no-gutters">
+                          <div class="col-lg-1 col-3">
+                              <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid" width="65px" height="65px">
+                          </div>
+                          <div class="col-lg-11 col-9">
+                              <p>
+                                <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">
+                                <%= postcomment.user.email %>
+                                </span> 
+                                <span style="margin-left: 5px; color: #9B9B9B; font-size: 10px; font-weight: 500;">11:59pm</span><br>
+                                <span style="margin-left: 10px; color: #9B9B9B; font-size: 11px;">
+                                <%= postcomment.body %>
+                              </span>
+                              </p>
+                              
+                          </div>
+                        </div>
+
+                    </div>
+
+
+                    <% end %>
+
+                    
+
+
+                    
+
+                  </div>
+                </div>
+
+                  
+                  
+                
+
+                <!-- Comments end -->
+              </div>
+
+            </div>
+          </div>
+            
+           
+
+            <!-- Post end -->
+
+<% end %>
+
+ </div>
+
+        </div>
+          
+
+
+          <!-- Post deal with these closing divs -->
+
+            
+
+
+
+         
+
+       
+
+
+
+      </div>
+
+
+    </div>
+
+    
+
+    <div class="col-lg-3" style="padding-left: 20px; padding-right: 20px;">
+      <div class="row">
+        
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12">
+              <p class="topcompoststop">Latest Community Poll</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="holdpollholder">
+            <div class="col-lg-12">
+              <div class="row no-gutters">
+                <div class="col-lg-2 col-3">
+                  <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+                </div>
+                <div class="col-lg-10 col-9">
+                  <span style="margin-left: 10px; color: #f17100; font-size: 12px; font-weight: 600;">
+                  Et elit et incididunt voluptate deserunt ad est est.
+                </span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="holdpollbtns">
+                    <label class="labelcontainer">Elder Mireku
+                    <input type="radio" name="con[answer]" onclick="submityourPoll()" id="con_answer" value="eldermireku">
+                    <span class="checkmark"></span>
+                    </label>
+
+                    <label class="labelcontainer">Lizzy Rockson
+                    <input type="radio" name="con[answer]" onclick="submityourPoll()" id="con_answer" value="lizzyrockson">
+                    <span class="checkmark"></span>
+                    </label>
+
+                    <label class="labelcontainer">Joe Mettle
+                    <input type="radio" name="con[answer]" onclick="submityourPoll()" id="con_answer" value="joemettle">
+                    <span class="checkmark"></span>
+                    </label>
+
+                    <label class="labelcontainer">Don Moen
+                    <input type="radio" name="con[answer]" onclick="submityourPoll()" id="con_answer" value="donmoen">
+                    <span class="checkmark"></span>
+                    </label>
+                      <p id="submypoller" style="text-align: center; display: none;">
+                      <button class="btn btn-primary pollsubmit" style="margin-top: 7px;">Submit</button>
+                      </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <p class="topcompoststop1">Community Members</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="holdmembersholder">
+
+              <% User.all.find_each do |user| %>
+
+  
+    
+
+    <div class="col-lg-12" id="user-<%= user.id %>" style="margin-top: 20px;">
+      <div class="row no-gutters">
+        <div class="col-lg-2 col-2">
+          <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+        </div>
+        <div class="col-lg-6 col-6" style="line-height: 14px;">
+          <span style="margin-left: 10px; color: #000000; font-size: 12px; font-weight: 600;">
+          Bernard Lomo <%= user.id %>
+        </span>
+        <span style="margin-left: 10px; color: #dddddd; font-size: 9px; font-weight: 400;">
+          Founder of Africa
+        </span>
+        </div>
+        <div class="col-lg-4 col-4">
+          <% if current_user.following?(user) %>
+            <%= button_to "Following", {action: 'unfollow', :controller=>"relationships", user_id: user.id}, method: 'post', class: 'btn btn-success ffmemberbtnfollowed' %>
+          <% elsif current_user != user %>
+            <%= button_to "Follow", {action: 'follow', :controller=>"relationships", user_id: user.id}, method: 'post', class: 'btn btn-primary ffmemberbtn' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+      
+  
+
+  <% end %>
+              
+            </div>
+          </div>
+
+
+        </div>
+
+       
+
+      </div>
+    </div>
+    <div class="col-lg-3" style="padding-left: 45px; padding-right: 0px;">
+      <div class="row">
+
+        <div class="holdshareholder">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-12">
+                <p style="text-align: center; font-weight: 400; color: #f17100;">Invite your friends and colleagues to Kuulish</p>
+                <p style="text-align: center;">
+                  <a href="fb-messenger://share/?link= https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fsharing%2Freference%2Fsend-dialog&app_id=123456789" target="_blank">
+                    <img width="35px" height="35px" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/messenger_yywjlv.png">
+                  </a>
+                  <a href="whatsapp://send?text=http://www.kuulish.com" target="_blank">
+                    <img width="35px" height="35px" style="margin-left: 5px;" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/whatsapp_3_zp0khe.png">
+                  </a>
+                  <a href="mailto:hello@kuulish.com" target="_blank">
+                    <img width="35px" height="35px" style="margin-left: 5px;" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/gmail_wnjtg4.png">
+                  </a>
+                  <img width="35px" height="35px" style="margin-left: 5px;" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/outlook_rpkemc.png">
+                </p>
+              </div>
+              <div class="col-lg-12">
+                <div class="row">
+                  <div class="col-lg-5 col-5">
+                    <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577863146/liner_ugorna.png" class="img-fluid">
+                  </div>
+                  <div class="col-lg-2 col-2">
+                    <div style="text-align: center; width: 100%;">
+                      <p style="text-align: center; font-weight: 500; color: #4a4a4a;">OR</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-5">
+                    <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577863146/liner_ugorna.png" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <p style="text-align: center;">Share Via Social Networks</p>
+                <p>
+                  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://kuulish.com&title=Join Kool Parents. Let's share what's going on!" class="btn btn-primary linkedinhomesharebtn" target="_blank"><i class="fab fa-linkedin"></i> LINKEDIN</a><br>
+                  <a href="http://www.facebook.com/sharer.php?u=http://kuulish.com" class="btn btn-primary fbhomesharebtn"  target="_blank"><i class="fab fa-facebook-f"></i> FACEBOOK</a><br>
+                  <a href="https://twitter.com/share?url=http://kuulish.com&amp;text=Know What is Going on as a parent..&amp;hashtags=KuulishParents" class="btn btn-primary twitterhomesharebtn" target="_blank">
+                    <i class="fab fa-twitter"></i> TWITTER</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+        <div class="holdshareholder1">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-12">
+                <p style="text-align: center; font-weight: 500; color: #f17100; font-size: 12px;">
+                Invite Friends and colleagues to kuulish directly!
+                </p>
+                <p style="text-align: center; font-size: 12px; color: #4a4a4a;">
+                  Proident deserunt velit consequat mollit enim consectetur ut proident est. Proident deserunt velit consequat.
+                </p>
+                <div class="form-group">
+                  <label style="text-align: center; font-size: 10px; color: #f17100;">Select and Interest</label>
+                  <input type="" name="" class="form-control" placeholder="Select Interest">
+                </div>
+                <div class="form-group">
+                  <label style="text-align: center; font-size: 10px; color: #f17100;">Friend's email</label>
+                  <input type="" name="" class="form-control" placeholder="Select Interest">
+                </div>
+
+                <p style="text-align: center;">
+                  <button class="btn btn-primary ffmemberbtn" style="margin-left: 7px;">Invite New Member</button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <style type="text/css">
+
+    .upload-btn-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .btn1 {
+      border: 2px solid gray;
+      color: gray;
+      background-color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .upload-btn-wrapper input[type=file] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+    
+    .upload-btn-wrapper1 {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .btn1 {
+      border: 2px solid gray;
+      color: gray;
+      background-color: white;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .upload-btn-wrapper1 input[type=file] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+
+  </style>
+
+
+  <br><br><br>
+
+  <%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+
+  
+
+<div class="upload-btn-wrapper">
+  <button class="btn1">Add an Image</button>
+  <%= f.file_field :postimage %>
+</div>
+Or
+<div class="upload-btn-wrapper1">
+  <button class="btn1">Add a Video</button>
+  <%= f.file_field :postimage %>
+  
+</div>
+
+  
+
+  <div class="field" style="display: none;">
+    <%= f.label :group_id %>
+    <%= f.number_field :group_id, :value => "1" %>
+  </div>
+
+  <div class="field" style="display: none;">
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id, :user_id => current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#imgInp").change(function(){
+        readURL(this);
+    });
+</script>
+
+<br><br><br>
+<div class="row">
+<% Post.all.find_each do |post| %>
+
+ <!-- Post Begin -->
+
+    
+      
+          <div class="col-lg-12">
+
+
+            <div class="holdpostholder">
+              <div class="row">
+
+                    <!-- Top header -->
+                    <div class="col-lg-12">
+                      
+                      <div class="row">
+
+                        <div class="col-lg-2 col-2">
+                          <div class="holdimage">
+                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+                          </div>
+                        </div>
+                        <div class="col-lg-7 col-7">
+                          <div class="holdposttitle" style="line-height: 16px;">
+                            <span style="font-weight: 600; font-size: 14px;">
+                            <%= post.body %>
+                            </span>
+                            <br>
+                            <span style="font-weight: 700; font-size: 10px; color: #dddddd;">
+                            Posted by: <%= post.user.email %>
+                          </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-3">
+                          <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829070/like_3_t6voty.png" width="34px" height="34px" class="img-fluid">
+                          <span>10+</span>
+                        </div>
+
+                      </div>
+                    </div>
+                    
+                   <!--  Post Content -->
+                    <div class="col-lg-12">
+                      <div class="blogimage">
+                        <% if post.postvideo.present? %>
+                          <video width="100%" height="300px" controls>
+                          <source src="<%= post.postvideo %>">
+                          Your browser does not support the video tag.
+                      </video>
+                        <% end %>
+
+                        <% if post.postimage.present? %>
+                          <img src="<%= post.postimage %>" class="img-fluid">
+                        <% end %>
+                      </div>
+                      <p style="text-align: right; margin-top: 20px;">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829070/like_3_copy_ay0ic2.png" 
+                        width="25px" height="25px">
+                        <a href="" class="btn btn-primary btnreadb">Read Post</a>
+                      </p>
+                    </div>
+
+                <!-- Comment was here -->
+
+                  <div class="col-lg-12">
+                  <div class="row">
+                    <div class="col-lg-12">
+                        <p class="topcompoststop">Comments</p>
+                        <p><textarea class="form-control"></textarea>
+                        <p><button class="btn btn-primary" style="width: 100%;">Add your comment</button></p>
+                    </div>
+                  </div>
+                  <!-- Comments row -->
+                  <div class="row">
+                    
+                    <div class="col-lg-12" style="margin-top: 10px;">
+                      <div class="row no-gutters">
+                        <div class="col-lg-1 col-3">
+                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+                        </div>
+                        <div class="col-lg-11 col-9">
+                            <p>
+                              <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">Abass Matic</span> 
+                              <span style="margin-left: 5px; color: #9B9B9B; font-size: 10px; font-weight: 500;">11:59pm</span><br>
+                              <span style="margin-left: 10px; color: #9B9B9B; font-size: 11px;">
+                              The time of a man is like an egg being boiled. It takes no time to cook. That is how life is short. It is always a great thing to keep the time of your life in perspective.
+                            </span>
+                            </p>
+                            
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-12" style="margin-top: 10px;">
+                      <div class="row no-gutters">
+                        <div class="col-lg-1 col-3">
+                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+                        </div>
+                        <div class="col-lg-11 col-9">
+                            <p>
+                              <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">Abass Matic</span> 
+                              <span style="margin-left: 5px; color: #9B9B9B; font-size: 10px; font-weight: 500;">11:59pm</span><br>
+                              <span style="margin-left: 10px; color: #9B9B9B; font-size: 11px;">
+                              The time of a man is like an egg being boiled. It takes no time to cook. That is how life is short. It is always a great thing to keep the time of your life in perspective.
+                            </span>
+                            </p>
+                            
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-12" style="margin-top: 10px;">
+                      <div class="row no-gutters">
+                        <div class="col-lg-1 col-3">
+                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+                        </div>
+                        <div class="col-lg-11 col-9">
+                            <p>
+                              <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">Abass Matic</span> 
+                              <span style="margin-left: 5px; color: #9B9B9B; font-size: 10px; font-weight: 500;">11:59pm</span><br>
+                              <span style="margin-left: 10px; color: #9B9B9B; font-size: 11px;">
+                              The time of a man is like an egg being boiled. It takes no time to cook. That is how life is short. It is always a great thing to keep the time of your life in perspective.
+                            </span>
+                            </p>
+                            
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                  
+                  
+                
+
+                <!-- Comments end -->
+              </div>
+
+            </div>
+          </div>
+            
+           
+
+            <!-- Post end -->
+
+<% end %>
+
+ </div>
+
+
+ 
+
+
+
+<script type="text/javascript">
+  
+  function submityourPoll(){
+      document.getElementById('submypoller').style.display = 'block';
+  }
+
+
+</script>
 
 
 
@@ -15,7 +1043,7 @@
 <style type="text/css">
 	
 .homemainsect {
-	background:linear-gradient(0deg,rgba(255, 138, 0,0),rgba(255, 138, 0,0)),url(https://res.cloudinary.com/nikasemo/image/upload/v1577488310/coolparent2_njlrkk.jpg);
+	background:linear-gradient(0deg,rgba(255, 138, 0,0.5),rgba(255, 138, 0,0.5)),url(https://res.cloudinary.com/nikasemo/image/upload/v1578461742/5e1569da64f16homenew_ifll2q.png);
 	height: 100vh;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -215,9 +1243,7 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
     			<div class="holdintrotextdone">
             <h1 class="welcomet" style="color: #ffffff;">Welcome to Kuulish!</h1><br>
     				<p style="" class="holdintrohometext">
-    					On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and.
-    				<br><br>
-    				demoralized by the charms of pleasure of the
+    					Welcome to the main place parents around the world come to know what’s cool … Well more like cool -ish! We all find it hard to keep up with new trends, dances, entertainment and even names for the things we did (that our parents hated) when we were young.<br><br> This site is the bridge you need to keep up with your kids. You’re welcome!
     				</p>
     				<br>
     				<p>

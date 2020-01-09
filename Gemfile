@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 
 gem 'figaro'
+gem 'markable' , github: 'effektz/markable'
 
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
@@ -32,6 +33,9 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+
+gem 'carrierwave', '~> 1.0'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

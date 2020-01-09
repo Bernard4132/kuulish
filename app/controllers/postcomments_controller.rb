@@ -28,7 +28,7 @@ class PostcommentsController < ApplicationController
 
     respond_to do |format|
       if @postcomment.save
-        format.html { redirect_to @postcomment, notice: 'Postcomment was successfully created.' }
+        format.html { redirect_to :back, notice: 'Postcomment was successfully created.' }
         format.json { render :show, status: :created, location: @postcomment }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class PostcommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def postcomment_params
-      params.require(:postcomment).permit(:body, :post_id)
+      params.require(:postcomment).permit(:body, :post_id, :user_id)
     end
 end

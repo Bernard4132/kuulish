@@ -21,6 +21,16 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def postlike
+  @post = Post.find(params[:id])
+  current_user.set_mark :postlike, @post
+  flash[:notice] = 'Added to your favorite'
+   respond_to do |format|
+    format.html {redirect_to :back}
+      format.js 
+    end
+  end
+
   # POST /posts
   # POST /posts.json
   def create
@@ -69,6 +79,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:body, :postimage, :group_id, :user_id)
+      params.require(:post).permit(:body, :postimage, :postvideo, :group_id, :user_id)
     end
 end

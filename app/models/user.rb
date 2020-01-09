@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :groups, through: :memberships
   has_many :posts
   has_many :blogs
+  has_many :postcomments
+  acts_as_marker
+  acts_as_followable
+  acts_as_follower
 
   def password_required?
     return false 
