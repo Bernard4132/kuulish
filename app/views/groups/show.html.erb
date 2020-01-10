@@ -234,7 +234,7 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
 box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
   }
 
-  .ffmemberbtn {
+   .ffmemberbtn {
   background-color: transparent;
   border: 1.5px solid #f17100;
   color: #f17100;
@@ -242,6 +242,44 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
   border-radius: 15px;
 }
 
+.ffmemberbtn:hover {
+  background-color: transparent;
+  border: 1.5px solid #f17100;
+  color: #f17100;
+  font-size: 12px;
+  border-radius: 15px;
+}
+.ffmemberbtn:active {
+  background-color: transparent;
+  border: 1.5px solid #f17100;
+  color: #f17100;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtnfollowed {
+  background-color: #f17100;
+  border: 1.5px solid #f17100;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtnfollowed:hover {
+  background-color: #f17100;
+  border: 1.5px solid #f17100;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtnfollowed:active {
+  background-color: #f17100;
+  border: 1.5px solid #f17100;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 15px;
+}
  .holdpostholder {
     margin-top: 10px;
     background-color: #ffffff;
@@ -284,176 +322,238 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
 <div class="row">
   <div class="col-lg-9" style="padding-right: 40px;">
 
-    <div class="row">
-      <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-12">
 
-        <div class="aduins">
-          <div class="container">
-            <div class="row" style="margin-top: 70px">
-              <div class="col-lg-12">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <p style="color: #ffffff; font-size: 25px; font-weight: 600;">Parents of Children with Autism</p>
-                    <p style="color: #ffffff; font-size: 14px; font-weight: 400;">This group is to provide a community which gives support to parents whose children are autistic. Help, Advice and Love.</p>
-                  </div>
-                  <div class="col-lg-4">
-                    <div class="row no-gutters">
-                      <div class="col-lg-12">
-                        <p style="background-color: rgba(255,255,255, 0.3); width: 80px; text-align: center; padding: 5px;">
-                          <span style="font-size: 25px; font-weight: 600; color: #ffffff;">200</span>
-                          <br>
-                          <span style="font-size: 12px; font-weight: 300; color: #ffffff;">Members</span>
-                        </p>
-                      </div>
-                      <div class="col-lg-4">
-                        <a href="" class="btn btn-primary btninvitejoin">Invite</a>
-                      </div>
-                      <div class="col-lg-8">
-                          <a href="" class="btn btn-primary btninvitejoin" style="margin-left: 10px;">Join Community</a>
+              <div class="aduins">
+                <div class="container">
+                  <div class="row" style="margin-top: 70px">
+                    <div class="col-lg-12">
+                      <div class="row">
+                        <div class="col-lg-8">
+                          <p style="color: #ffffff; font-size: 25px; font-weight: 600;"><%= @group.name %></p>
+                          <p style="color: #ffffff; font-size: 14px; font-weight: 400;">
+                            <%= @group.description %>
+                          </p>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="row no-gutters">
+                            <div class="col-lg-12">
+                              <p style="background-color: rgba(255,255,255, 0.3); width: 80px; text-align: center; padding: 5px;">
+                                <span style="font-size: 25px; font-weight: 600; color: #ffffff;">
+                                  <%= @group.users.count %>
+                                    
+                                  </span>
+                                <br>
+                                <span style="font-size: 12px; font-weight: 300; color: #ffffff;">Members</span>
+                              </p>
+                            </div>
+                            <div class="col-lg-4">
+                              <a href="" class="btn btn-primary btninvitejoin">Invite</a>
+                            </div>
+                            <div class="col-lg-8">
+                              <%= link_to "Join Community", memberships_path(group_id: @group.id), method: :post, :class => "btn btn-primary", :class => "btn btn-primary btninvitejoin", :style => "margin-left: 10px;" %>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
-        </div>
-
-
-      </div>
-    </div>
 
     <div class="row">
 
     </div>
 
 
-    <!-- Post Begin -->
+    <!-- Post row holder begin -->
 
     <div class="row">
       <div class="col-lg-8 col-8" style="margin-top: 20px;">
 
-        <div class="row">
+                      <div class="row">
+<% @group.posts.find_each do |post| %>
+
+ <!-- Post Begin -->
+
+    
+      
           <div class="col-lg-12">
 
 
-        <div class="holdpostholder">
+            <div class="holdpostholder">
               <div class="row">
 
-                <div class="col-lg-12">
-                  
-                  <div class="row">
+                    <!-- Top header -->
+                    <div class="col-lg-12">
+                      
+                      <div class="row">
 
-                    <div class="col-lg-2 col-2">
-                      <div class="holdimage">
-                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+                        <div class="col-lg-2 col-2">
+                          <div class="holdimage">
+                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid" width="80px" height="80px">
+                          </div>
+                        </div>
+                        <div class="col-lg-7 col-7">
+                          <div class="holdposttitle" style="line-height: 16px;">
+                            <span style="font-weight: 600; font-size: 14px;">
+                            <%= post.body %>
+                            </span>
+                            <br>
+                            <span style="font-weight: 700; font-size: 10px; color: #dddddd;">
+                            Posted by: <%= post.user.email %>
+                          </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-3">
+                          <% if signed_in? %>
+            
+                          <% if post.marked_as? :postlike, :by => current_user %>
+                              <a href="" class="btn brightgreenbtn" style="margin-left: 5px;">
+                                <i class="fa fa-heart" style="color: #f17100;" aria-hidden="true"></i>
+                              </a>
+                            <% else %>
+                              <%= link_to '<i class="fa fa-heart"  style="color: #979797;" aria-hidden="true"></i>'.html_safe, postlike_post_path(post), method: :post, :class => "btn brightbluestrokedbtn", :style => "margin-left: 5px;" %>
+                            <% end %>       
+                       
+                        <% else %>
+                          <a href="/users/sign_in" class="btn brightbluestrokedbtn" style="margin-left: 5px;"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        <% end %>
+
+                          <span><%= post.users_have_marked_as_postlike.count %> +</span>
+                        </div>
+
                       </div>
                     </div>
-                    <div class="col-lg-7 col-7">
-                      <div class="holdposttitle" style="line-height: 16px;">
-                        <span style="font-weight: 600; font-size: 14px;">How to talk children out of fighting and conflict resolution.</span><br>
-                        <span style="font-weight: 700; font-size: 10px; color: #dddddd;">Author: Naa Dei</span>
+                    
+                   <!--  Post Content -->
+                    <div class="col-lg-12">
+                      <div class="blogimage">
+                        <% if post.postvideo.present? %>
+                          <video width="100%" height="300px" controls>
+                          <source src="<%= post.postvideo %>">
+                          Your browser does not support the video tag.
+                      </video>
+                        <% end %>
+
+                        <% if post.postimage.present? %>
+                          <img src="<%= post.postimage %>" class="img-fluid">
+                        <% end %>
                       </div>
+                      <!-- <p style="text-align: right; margin-top: 20px;">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829070/like_3_copy_ay0ic2.png" 
+                        width="25px" height="25px">
+                        <a href="" class="btn btn-primary btnreadb">Read Post</a>
+                      </p> -->
                     </div>
-                    <div class="col-lg-3 col-3">
-                      <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829070/like_3_t6voty.png" width="34px" height="34px" class="img-fluid">
-                      <span>10+</span>
-                    </div>
 
-                  </div>
-                </div>
-                
+                <!-- Comment was here -->
 
-                <div class="col-lg-12">
-                  <div class="blogimage">
-                    <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577830948/2019-08_talkingparents_blogs_fight-in-front-of-kids_hero-min_g8avny.png" class="img-fluid">
-                  </div>
-                  <p style="text-align: right; margin-top: 20px;">
-                    <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829070/like_3_copy_ay0ic2.png" 
-                    width="25px" height="25px">
-                    <a href="" class="btn btn-primary btnreadb">Read Post</a>
-                  </p>
-                </div>
-
-                <div class="col-lg-12">
+                  <div class="col-lg-12">
                   <div class="row">
                     <div class="col-lg-12">
                         <p class="topcompoststop">Comments</p>
+                        <%= form_for(@postcomment) do |f| %>
+                          <% if @postcomment.errors.any? %>
+                            <div id="error_explanation">
+                              <h2><%= pluralize(@postcomment.errors.count, "error") %> prohibited this postcomment from being saved:</h2>
+
+                              <ul>
+                              <% @postcomment.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                              <% end %>
+                              </ul>
+                            </div>
+                          <% end %>
+
+                          <div class="form-group">
+                            <%= f.text_area :body, :class => "form-control", :placeholder => "Share your comments!" %>
+                          </div>
+
+                          <div class="field" style="display: none;">
+                            <%= f.label :post_id %>
+                            <%= f.number_field :post_id, :value => post.id %>
+                          </div>
+
+                          <div class="field" style="display: none;">
+                            <%= f.label :user_id %>
+                            <%= f.number_field :user_id, :value => current_user.id %>
+                          </div>
+                          <p style="margin-top: 20px;"><button class="btn btn-primary" style="width: 100%;">Add your comment</button></p>
+                          
+                        <% end %>
+                        
+                        
                     </div>
                   </div>
+                  <!-- Comments row -->
                   <div class="row">
+                    
+                    <% post.postcomments.find_each do |postcomment| %>
 
-                    <div class="col-lg-12">
-                      <div class="row no-gutters">
-                        <div class="col-lg-1 col-3">
-                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+                      <div class="col-lg-12" style="margin-top: 10px;">
+                        <div class="row no-gutters">
+                          <div class="col-lg-1 col-3">
+                              <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid" width="65px" height="65px">
+                          </div>
+                          <div class="col-lg-11 col-9">
+                              <p>
+                                <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">
+                                <%= postcomment.user.email %>
+                                </span> 
+                                <span style="margin-left: 5px; color: #9B9B9B; font-size: 10px; font-weight: 500;">11:59pm</span><br>
+                                <span style="margin-left: 10px; color: #9B9B9B; font-size: 11px;">
+                                <%= postcomment.body %>
+                              </span>
+                              </p>
+                              
+                          </div>
                         </div>
-                        <div class="col-lg-11 col-9">
-                            <p>
-                              <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">Abass Matic</span> 
-                              <span style="margin-left: 5px; color: #9B9B9B; font-size: 10px; font-weight: 500;">11:59pm</span><br>
-                              <span style="margin-left: 10px; color: #9B9B9B; font-size: 11px;">
-                              The time of a man is like an egg being boiled. It takes no time to cook. That is how life is short. It is always a great thing to keep the time of your life in perspective.
-                            </span>
-                            </p>
-                            
-                        </div>
-                      </div>
-                    </div>
 
-                    <div class="col-lg-12">
-                      <div class="row no-gutters">
-                        <div class="col-lg-1 col-3">
-                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
-                        </div>
-                        <div class="col-lg-11 col-9">
-                            <p>
-                              <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">Abass Matic</span> 
-                              <span style="margin-left: 5px; color: #9B9B9B; font-size: 10px; font-weight: 500;">11:59pm</span><br>
-                              <span style="margin-left: 10px; color: #9B9B9B; font-size: 11px;">
-                              The time of a man is like an egg being boiled. It takes no time to cook. That is how life is short. It is always a great thing to keep the time of your life in perspective.
-                            </span>
-                            </p>
-                            
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-12">
-                      <div class="row no-gutters">
-                        <div class="col-lg-1 col-3">
-                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
-                        </div>
-                        <div class="col-lg-11 col-9">
-                            <p>
-                              <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">Abass Matic</span> 
-                              <span style="margin-left: 5px; color: #9B9B9B; font-size: 10px; font-weight: 500;">11:59pm</span><br>
-                              <span style="margin-left: 10px; color: #9B9B9B; font-size: 11px;">
-                              The time of a man is like an egg being boiled. It takes no time to cook. That is how life is short. It is always a great thing to keep the time of your life in perspective.
-                            </span>
-                            </p>
-                            
-                        </div>
-                      </div>
                     </div>
 
 
+                    <% end %>
+
+                    
+
+
+                    
 
                   </div>
                 </div>
 
-              </div>
-            </div>
+                  
+                  
+                
 
+                <!-- Comments end -->
               </div>
+
             </div>
+          </div>
+            
+           
 
             <!-- Post end -->
 
+<% end %>
 
-
+ </div>  
 
       </div>
+    
+
+    <!-- Post row holder end -->
+
+
+
+
+     
 
 
 
@@ -462,92 +562,41 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
         <div class="row">
             <div class="holdmembersholder">
 
-              <div class="col-lg-12" style="margin-top: 20px;">
+              <% @group.users.uniq.find_all do |user| %>
+              <div class="col-lg-12" id="user-<%= user.id %>" style="margin-top: 20px;">
                 <div class="row no-gutters">
                   <div class="col-lg-2 col-2">
                     <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
                   </div>
-                  <div class="col-lg-6 col-6" style="line-height: 14px;">
-                    <span style="margin-left: 10px; color: #000000; font-size: 12px; font-weight: 600;">
-                    Bernard Lomo
+                  <div class="col-lg-7 col-7" style="line-height: 14px;">
+                    <span style="margin-left: 10px; color: #000000; font-size: 11px; font-weight: 600;">
+                    <%= user.email %>
                   </span>
-                  <span style="margin-left: 10px; color: #dddddd; font-size: 9px; font-weight: 400;">
+                  <br>
+                  <span style="margin-left: 10px; color: #ff8c04; font-size: 9px; font-weight: 300;">
                     Founder of Africa
                   </span>
                   </div>
-                  <div class="col-lg-4 col-4">
-                    <a href="" class="btn btn-primary ffmemberbtn" style="margin-left: 7px;">Follow</a>
+                  <div class="col-lg-3 col-3">
+                    <% if current_user.following?(user) %>
+                      <%= button_to "Following", {action: 'unfollow', :controller=>"relationships", user_id: user.id}, method: 'post', class: 'btn btn-success ffmemberbtnfollowed' %>
+                    <% elsif current_user != user %>
+                      <%= button_to "Follow", {action: 'follow', :controller=>"relationships", user_id: user.id}, method: 'post', class: 'btn btn-primary ffmemberbtn' %>
+                    <% end %>
                   </div>
                 </div>
               </div>
-
-
-              <div class="col-lg-12" style="margin-top: 20px;">
-                <div class="row no-gutters">
-                  <div class="col-lg-2 col-2">
-                    <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
-                  </div>
-                  <div class="col-lg-6 col-6" style="line-height: 14px;">
-                    <span style="margin-left: 10px; color: #000000; font-size: 12px; font-weight: 600;">
-                    Bernard Lomo
-                  </span>
-                  <span style="margin-left: 10px; color: #dddddd; font-size: 9px; font-weight: 400;">
-                    Founder of Africa
-                  </span>
-                  </div>
-                  <div class="col-lg-4 col-4">
-                    <a href="" class="btn btn-primary ffmemberbtn" style="margin-left: 7px;">Follow</a>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-lg-12" style="margin-top: 20px;">
-                <div class="row no-gutters">
-                  <div class="col-lg-2 col-2">
-                    <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
-                  </div>
-                  <div class="col-lg-6 col-6" style="line-height: 14px;">
-                    <span style="margin-left: 10px; color: #000000; font-size: 12px; font-weight: 600;">
-                    Bernard Lomo
-                  </span>
-                  <span style="margin-left: 10px; color: #dddddd; font-size: 9px; font-weight: 400;">
-                    Founder of Africa
-                  </span>
-                  </div>
-                  <div class="col-lg-4 col-4">
-                    <a href="" class="btn btn-primary ffmemberbtn" style="margin-left: 7px;">Follow</a>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="col-lg-12" style="margin-top: 20px;">
-                <div class="row no-gutters">
-                  <div class="col-lg-2 col-2">
-                    <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
-                  </div>
-                  <div class="col-lg-6 col-6" style="line-height: 14px;">
-                    <span style="margin-left: 10px; color: #000000; font-size: 12px; font-weight: 600;">
-                    Bernard Lomo
-                  </span>
-                  <span style="margin-left: 10px; color: #dddddd; font-size: 9px; font-weight: 400;">
-                    Founder of Africa
-                  </span>
-                  </div>
-                  <div class="col-lg-4 col-4">
-                    <a href="" class="btn btn-primary ffmemberbtn" style="margin-left: 7px;">Follow</a>
-                  </div>
-                </div>
-              </div>
+            <% end %>            
 
           </div>
         </div>
         
       </div>
     </div>
-
   </div>
+   
+
+  
 
 
   <div class="col-lg-3">
@@ -626,9 +675,15 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
               <div class="col-lg-12">
                 <p style="text-align: center; font-weight: 400; color: #f17100;">Invite your friends and colleagues to Kuulish</p>
                 <p style="text-align: center;">
-                  <img width="35px" height="35px" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/messenger_yywjlv.png">
-                  <img width="35px" height="35px" style="margin-left: 5px;" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/whatsapp_3_zp0khe.png">
-                  <img width="35px" height="35px" style="margin-left: 5px;" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/gmail_wnjtg4.png">
+                  <a href="fb-messenger://share/?link= https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fsharing%2Freference%2Fsend-dialog&app_id=123456789" target="_blank">
+                    <img width="35px" height="35px" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/messenger_yywjlv.png">
+                  </a>
+                  <a href="whatsapp://send?text=http://www.kuulish.com" target="_blank">
+                    <img width="35px" height="35px" style="margin-left: 5px;" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/whatsapp_3_zp0khe.png">
+                  </a>
+                  <a href="mailto:hello@kuulish.com" target="_blank">
+                    <img width="35px" height="35px" style="margin-left: 5px;" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/gmail_wnjtg4.png">
+                  </a>
                   <img width="35px" height="35px" style="margin-left: 5px;" src="https://res.cloudinary.com/nikasemo/image/upload/v1577861686/outlook_rpkemc.png">
                 </p>
               </div>
@@ -651,9 +706,9 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
               <div class="col-lg-12">
                 <p style="text-align: center;">Share Via Social Networks</p>
                 <p>
-                  <a href="" class="btn btn-primary linkedinhomesharebtn"><i class="fab fa-linkedin"></i> LINKEDIN</a><br>
-                  <a href="" class="btn btn-primary fbhomesharebtn"><i class="fab fa-facebook-f"></i> FACEBOOK</a><br>
-                  <a href="" class="btn btn-primary twitterhomesharebtn">
+                  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://kuulish.com&title=Join Kool Parents. Let's share what's going on!" class="btn btn-primary linkedinhomesharebtn" target="_blank"><i class="fab fa-linkedin"></i> LINKEDIN</a><br>
+                  <a href="http://www.facebook.com/sharer.php?u=http://kuulish.com" class="btn btn-primary fbhomesharebtn"  target="_blank"><i class="fab fa-facebook-f"></i> FACEBOOK</a><br>
+                  <a href="https://twitter.com/share?url=http://kuulish.com&amp;text=Know What is Going on as a parent..&amp;hashtags=KuulishParents" class="btn btn-primary twitterhomesharebtn" target="_blank">
                     <i class="fab fa-twitter"></i> TWITTER</a>
                 </p>
               </div>

@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
     @membership = Membership.new
     @post = Post.new
     @blog = Blog.new
+    @postcomment = Postcomment.new
   end
 
   # GET /groups/new
