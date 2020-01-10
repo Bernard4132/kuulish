@@ -11,7 +11,7 @@
 <style type="text/css">
   
   .holdgrouppartial {
-    background:linear-gradient(0deg,rgba(0, 0, 0,0.7),rgba(0, 0, 0,0.7)),url(https://res.cloudinary.com/nikasemo/image/upload/v1577869310/green-leaves-pattern_diana-toledano_h5faho.png);
+    background:linear-gradient(0deg,rgba(0, 0, 0,0.7),rgba(0, 0, 0,0.7)),url(https://res.cloudinary.com/nikasemo/image/upload/v1578625960/coolparent22_xocdas.jpg);
     background-position:center;
     height: 150px;
     width: 90%;
@@ -262,7 +262,7 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
   border-radius: 15px;
 }
 
-.ffmemberbtnfollowed:active {
+.ffmemberbtnfollowed:hover {
   background-color: #f17100;
   border: 1.5px solid #f17100;
   width: 100%;
@@ -469,7 +469,7 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
                           <% end %>
 
                           <div class="form-group">
-                            <%= f.text_area :body, :class => "form-control", :placeholder => "Enter your comments" %>
+                            <%= f.text_area :body, :class => "form-control", :placeholder => "Share your comments!" %>
                           </div>
 
                           <div class="field" style="display: none;">
@@ -674,7 +674,7 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
 
       </div>
     </div>
-    <div class="col-lg-3 holdershare" style="">
+    <div class="col-lg-3 holdershare">
       <div class="row">
 
         <div class="holdshareholder">
@@ -1023,6 +1023,73 @@ Or
 
             </div>
           </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                
+                <div class="modal-body">
+                  
+                  <%= form_for(@post) do |f| %>
+                  <% if @post.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+                      <ul>
+                      <% @post.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+
+
+                  <div class="form-group">
+                    <label style="color: #f17100;">Write Post</label>
+                    <%= f.text_area :body, :class => "form-control", :rows => "5" %>
+                  </div>
+
+                  
+
+                <div class="upload-btn-wrapper">
+                  <button class="btn1">Add an Image</button>
+                  <%= f.file_field :postimage %>
+                </div>
+                Or
+                <div class="upload-btn-wrapper1">
+                  <button class="btn1">Add a Video</button>
+                  <%= f.file_field :postimage %>
+                  
+                </div>
+
+                  
+
+                  <div class="field" style="display: none;">
+                    <%= f.label :group_id %>
+                    <%= f.number_field :group_id, :value => "1" %>
+                  </div>
+
+                  <div class="field" style="display: none;">
+                    <%= f.label :user_id %>
+                    <%= f.number_field :user_id, :user_id => current_user.id %>
+                  </div>
+
+                  <div class="actions">
+                    <%= f.submit "Share Post", :class => "btn btn-primary", :style => "width: 100%;" %>
+                  </div>
+                <% end %>
+
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+
+          <button type="button" class="btn btn-primary" style="position: fixed; bottom: 40px; right: 45px; z-index: 99999;" data-toggle="modal" data-target="#exampleModal">
+            Share a Post
+          </button>
             
            
 

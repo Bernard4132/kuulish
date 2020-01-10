@@ -1,0 +1,115 @@
+<style type="text/css">
+
+  .tcommindex {
+    color: #f17100;
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
+
+  .holdmembersholder {
+    margin-top: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding-right: 20px;
+    padding-left: 3px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+-moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+  }
+
+  .ffmemberbtn {
+  background-color: transparent;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #f17100;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtn:hover {
+  background-color: transparent;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #f17100;
+  font-size: 12px;
+  border-radius: 15px;
+}
+.ffmemberbtn:active {
+  background-color: transparent;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #f17100;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtnfollowed {
+  background-color: #f17100;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtnfollowed:hover {
+  background-color: #f17100;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+.ffmemberbtnfollowed:active {
+  background-color: #f17100;
+  border: 1.5px solid #f17100;
+  width: 100%;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 15px;
+}
+
+</style>
+
+<div class="container">
+
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="tcommindex">Top Communities</h1>
+  </div>
+</div>
+
+<div class="row">
+    <div class="holdmembersholder">
+        <% User.all.find_each do |user| %>
+          <div class="col-lg-12" id="user-<%= user.id %>" style="margin-top: 20px;">
+            <div class="row no-gutters">
+              <div class="col-lg-2 col-2">
+                <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+              </div>
+              <div class="col-lg-7 col-7" style="line-height: 14px;">
+                <span style="margin-left: 10px; color: #000000; font-size: 16px; font-weight: 600;">
+                <%= user.email %>
+              </span>
+              <br><br>
+              <span style="margin-left: 10px; color: #ff8c04; font-size: 12px; font-weight: 300;">
+                Founder of Africa
+              </span>
+              </div>
+              <div class="col-lg-3 col-3">
+                <% if current_user.following?(user) %>
+                  <%= button_to "Following", {action: 'unfollow', :controller=>"relationships", user_id: user.id}, method: 'post', class: 'btn btn-success ffmemberbtnfollowed' %>
+                <% elsif current_user != user %>
+                  <%= button_to "Follow", {action: 'follow', :controller=>"relationships", user_id: user.id}, method: 'post', class: 'btn btn-primary ffmemberbtn' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>            
+    </div>
+</div>
+
+</div>

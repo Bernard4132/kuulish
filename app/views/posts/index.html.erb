@@ -1,33 +1,206 @@
-<p id="notice"><%= notice %></p>
+<style type="text/css">
 
-<h1>Posts</h1>
+  .tcommindex {
+    color: #f17100;
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
 
-<table>
-  <thead>
-    <tr>
-      <th>Body</th>
-      <th>Postimage</th>
-      <th>Group</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  .holdpostholder {
+    margin-top: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+-moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
+  }
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.body %></td>
-        <td><%= post.postimage %></td>
-        <td><%= post.group_id %></td>
-        <td><%= post.user_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</style>
 
-<br>
+<div class="container">
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="tcommindex">Top Community Posts</h1>
+  </div>
+</div>
 
-<%= link_to 'New Post', new_post_path %>
+<div class="row">
+
+          <div class="col-lg-8">
+
+          <div class="row">
+<% Post.all.find_each do |post| %>
+
+ <!-- Post Begin -->
+
+    
+      
+          <div class="col-lg-12">
+
+
+            <div class="holdpostholder">
+              <div class="row">
+
+                    <!-- Top header -->
+                    <div class="col-lg-12">
+                      
+                      <div class="row">
+
+                        <div class="col-lg-2 col-2">
+                          <div class="holdimage">
+                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid" width="80px" height="80px">
+                          </div>
+                        </div>
+                        <div class="col-lg-7 col-7">
+                          <div class="holdposttitle" style="line-height: 16px;">
+                            <span style="font-weight: 600; font-size: 14px;">
+                            <%= post.body %>
+                            </span>
+                            <br>
+                            <span style="font-weight: 700; font-size: 10px; color: #dddddd;">
+                            Posted by: <%= post.user.email %>
+                          </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-3 col-3">
+                          <% if signed_in? %>
+            
+                          <% if post.marked_as? :postlike, :by => current_user %>
+                              <a href="" class="btn brightgreenbtn" style="margin-left: 5px;">
+                                <i class="fa fa-heart" style="color: #f17100;" aria-hidden="true"></i>
+                              </a>
+                            <% else %>
+                              <%= link_to '<i class="fa fa-heart"  style="color: #979797;" aria-hidden="true"></i>'.html_safe, postlike_post_path(post), method: :post, :class => "btn brightbluestrokedbtn", :style => "margin-left: 5px;" %>
+                            <% end %>       
+                       
+                        <% else %>
+                          <a href="/users/sign_in" class="btn brightbluestrokedbtn" style="margin-left: 5px;"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                        <% end %>
+
+                          <span><%= post.users_have_marked_as_postlike.count %> +</span>
+                        </div>
+
+                      </div>
+                    </div>
+                    
+                   <!--  Post Content -->
+                    <div class="col-lg-12">
+                      <div class="blogimage">
+                        <% if post.postvideo.present? %>
+                          <video width="100%" height="300px" controls>
+                          <source src="<%= post.postvideo %>">
+                          Your browser does not support the video tag.
+                      </video>
+                        <% end %>
+
+                        <% if post.postimage.present? %>
+                          <img src="<%= post.postimage %>" class="img-fluid">
+                        <% end %>
+                      </div>
+                      <!-- <p style="text-align: right; margin-top: 20px;">
+                        <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829070/like_3_copy_ay0ic2.png" 
+                        width="25px" height="25px">
+                        <a href="" class="btn btn-primary btnreadb">Read Post</a>
+                      </p> -->
+                    </div>
+
+                <!-- Comment was here -->
+
+                  <div class="col-lg-12">
+                  <div class="row">
+                    <div class="col-lg-12">
+                        <p class="topcompoststop">Comments</p>
+                        <%= form_for(@postcomment) do |f| %>
+                          <% if @postcomment.errors.any? %>
+                            <div id="error_explanation">
+                              <h2><%= pluralize(@postcomment.errors.count, "error") %> prohibited this postcomment from being saved:</h2>
+
+                              <ul>
+                              <% @postcomment.errors.full_messages.each do |message| %>
+                                <li><%= message %></li>
+                              <% end %>
+                              </ul>
+                            </div>
+                          <% end %>
+
+                          <div class="form-group">
+                            <%= f.text_area :body, :class => "form-control", :placeholder => "Share your comments!" %>
+                          </div>
+
+                          <div class="field" style="display: none;">
+                            <%= f.label :post_id %>
+                            <%= f.number_field :post_id, :value => post.id %>
+                          </div>
+
+                          <div class="field" style="display: none;">
+                            <%= f.label :user_id %>
+                            <%= f.number_field :user_id, :value => current_user.id %>
+                          </div>
+                          <p style="margin-top: 20px;"><button class="btn btn-primary" style="width: 100%;">Add your comment</button></p>
+                          
+                        <% end %>
+                        
+                        
+                    </div>
+                  </div>
+                  <!-- Comments row -->
+                  <div class="row">
+                    
+                    <% post.postcomments.find_each do |postcomment| %>
+
+                      <div class="col-lg-12" style="margin-top: 10px;">
+                        <div class="row no-gutters">
+                          <div class="col-lg-1 col-3">
+                              <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid" width="65px" height="65px">
+                          </div>
+                          <div class="col-lg-11 col-9">
+                              <p>
+                                <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">
+                                <%= postcomment.user.email %>
+                                </span> 
+                                <span style="margin-left: 5px; color: #9B9B9B; font-size: 10px; font-weight: 500;">11:59pm</span><br>
+                                <span style="margin-left: 10px; color: #9B9B9B; font-size: 11px;">
+                                <%= postcomment.body %>
+                              </span>
+                              </p>
+                              
+                          </div>
+                        </div>
+
+                    </div>
+
+
+                    <% end %>
+
+                    
+
+
+                    
+
+                  </div>
+                </div>
+
+                  
+                  
+                
+
+                <!-- Comments end -->
+              </div>
+
+            </div>
+          </div>
+            
+           
+
+            <!-- Post end -->
+
+<% end %>
+
+ </div>
+
+        </div>
+
+</div>
+
+</div>
