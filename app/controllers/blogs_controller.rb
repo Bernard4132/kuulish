@@ -10,6 +10,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @allfive = Blog.last(5)
   end
 
   # GET /blogs/new

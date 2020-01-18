@@ -1,3 +1,17 @@
+<style type="text/css">
+  .continuebtn {
+    background-color: #f17100;
+    border-radius: 0px;
+    padding: 10px;
+    color: #ffffff;
+    border: none;
+     -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+  }
+</style>
+
+
 <%= form_for(group) do |f| %>
   <% if group.errors.any? %>
     <div id="error_explanation">
@@ -11,27 +25,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <label style="color: #f17100; font-size: 12px; font-weight: 500;">Group name</label>
+    <%= f.text_field :name, :class => "form-control", :placeholder => "Enter your group name" %>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+  <div class="form-group">
+    <label style="color: #f17100; font-size: 12px; font-weight: 500;">Group description</label>
+    <%= f.text_area :description, :class => "form-control", :placeholder => "Enter group description" %>
   </div>
 
-  <div class="field">
-    <%= f.label :groupcoverimage %>
-    <%= f.text_field :groupcoverimage %>
+  <div class="form-group">
+    <label style="color: #f17100; font-size: 12px; font-weight: 500;">Upload group cover photo</label>
+    <%= f.file_field :groupcoverimage, :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :groupprofile %>
-    <%= f.text_field :groupprofile %>
+  <div class="form-group">
+    <label style="color: #f17100; font-size: 12px; font-weight: 500;">Upload group profile photo</label>
+    <%= f.file_field :groupprofile, :class => "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit "Create Group" , :class => "btn btn-primary continuebtn" %>
   </div>
 <% end %>

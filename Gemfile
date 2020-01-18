@@ -27,6 +27,12 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 
 gem 'fog'
+gem 'wicked'
+
+gem 'trix'
+
+gem 'cancancan', '~> 2.0'
+gem 'rolify'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

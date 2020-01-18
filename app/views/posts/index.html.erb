@@ -16,6 +16,11 @@
 box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
   }
 
+  .blogimage {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
 </style>
 
 <div class="container">
@@ -49,7 +54,7 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
 
                         <div class="col-lg-2 col-2">
                           <div class="holdimage">
-                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid" width="80px" height="80px">
+                            <img src="<%= post.user.profileimage %>" class="img-fluid" width="80px" height="80px">
                           </div>
                         </div>
                         <div class="col-lg-7 col-7">
@@ -59,7 +64,7 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
                             </span>
                             <br>
                             <span style="font-weight: 700; font-size: 10px; color: #dddddd;">
-                            Posted by: <%= post.user.email %>
+                            Posted by: <%= post.user.name %>
                           </span>
                           </div>
                         </div>
@@ -110,6 +115,13 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
                   <div class="col-lg-12">
                   <div class="row">
                     <div class="col-lg-12">
+                      <p>
+                      <% if current_user.has_role?(:superadmin) %>
+                      <%= link_to 'Delete', post, :style => "color: red; font-weight: 500; font-size: 12px;", method: :delete, data: { confirm: 'Are you sure?' } %> | <a href="/admindashboard">Admin</a>
+                      <% elsif current_user.has_role?(:moderator) %>
+                     <%= link_to 'Delete', post, :style => "color: red; font-weight: 500; font-size: 12px;", method: :delete, data: { confirm: 'Are you sure?' } %>
+                      <% end %>
+                      </p>
                         <p class="topcompoststop">Comments</p>
                         <%= form_for(@postcomment) do |f| %>
                           <% if @postcomment.errors.any? %>

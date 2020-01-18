@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,6 +11,9 @@ class User < ApplicationRecord
   has_many :posts
   has_many :blogs
   has_many :postcomments
+  has_many :handerusers
+  has_many :handers, through: :handerusers
+  mount_uploader :profileimage, ProfileimageUploader
   acts_as_marker
   acts_as_followable
   acts_as_follower

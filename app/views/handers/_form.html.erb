@@ -1,0 +1,42 @@
+<%= form_for(hander) do |f| %>
+  <% if hander.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hander.errors.count, "error") %> prohibited this hander from being saved:</h2>
+
+      <ul>
+      <% hander.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+
+  <div class="form-group">
+    <label>Select role to assign</label><br>
+        <select class="select" name="hander[name]" id="hander_name" style="width: 100%;">
+          <option name="hander[name]" id="hander_name" value="superadmin">Super Admin</option>
+          <option name="hander[name]" id="hander_name" value="blogwriter">Blog writer</option>
+          <option name="hander[name]" id="hander_name" value="moderator">Moderator</option>
+          <option name="hander[name]" id="hander_name" value="user">User</option>
+        </select>
+      </div>
+
+  <div class="form-group">
+    <label>Select User</label><br>
+   <%= f.collection_select :user_ids, User.all, :id, :email, {prompt: "Select User"}, 
+    {:required => true, :class => "select", style: "width: 100%;"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Assign Role", :class => "btn btn-success" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+
+$( document ).ready(function() {
+ $('.select').select2();
+});
+
+</script>

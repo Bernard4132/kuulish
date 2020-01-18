@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :bodydescrip %>
-    <%= f.text_area :bodydescrip %>
+  <div class="form-group">
+    <label>Short Description</label>
+    <%= f.text_area :bodydescrip, :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= f.label :blogimage %>
-    <%= f.text_field :blogimage %>
+    <%= f.file_field :blogimage, :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+   <%= f.label :body %>
+   <%= f.trix_editor :body, label: "Write Blog Post", :class => "form-control", :placeholder => "Blog content goes here." %><br>
+  </div>
+
+  <div class="form-group">
     <%= f.label :group_id %>
     <%= f.number_field :group_id %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :user_id %>
     <%= f.number_field :user_id %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Publish Blog", :class => "btn btn-primary" %>
   </div>
 <% end %>

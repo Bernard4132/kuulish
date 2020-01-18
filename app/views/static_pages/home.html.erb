@@ -51,7 +51,7 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
     background-color: #ffffff;
     border-radius: 10px;
     padding-top: 10px;
-    padding-bottom: 7px;
+    padding-bottom: 15px;
     padding-left: 5px;
     padding-right: 5px;
     width: 100%;
@@ -321,6 +321,15 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
   margin-bottom: 12px;
 }
 
+.blogpostreadbutton {
+  width: 100%;
+  color: #ffffff;
+  background-color: #f17100;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 12px;
+}
+
 
 
 @media only screen and (min-width : 100px) and (max-width : 600px) {
@@ -420,7 +429,7 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
 
                         <div class="col-lg-2 col-2">
                           <div class="holdimage">
-                            <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid" width="80px" height="80px">
+                            <img src="<%= post.user.profileimage %>" class="img-fluid" width="80px" height="80px">
                           </div>
                         </div>
                         <div class="col-lg-7 col-7">
@@ -481,6 +490,13 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
                   <div class="col-lg-12">
                   <div class="row">
                     <div class="col-lg-12">
+                      <p>
+                      <% if current_user.has_role?(:superadmin) %>
+                      <%= link_to 'Delete', post, :style => "color: red; font-weight: 500; font-size: 12px;", method: :delete, data: { confirm: 'Are you sure?' } %> | <a href="/admindashboard">Admin</a>
+                      <% elsif current_user.has_role?(:moderator) %>
+                     <%= link_to 'Delete', post, :style => "color: red; font-weight: 500; font-size: 12px;", method: :delete, data: { confirm: 'Are you sure?' } %>
+                      <% end %>
+                      </p>
                         <p class="topcompoststop">Comments</p>
                         <%= form_for(@postcomment) do |f| %>
                           <% if @postcomment.errors.any? %>
@@ -523,12 +539,12 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
                       <div class="col-lg-12" style="margin-top: 10px;">
                         <div class="row no-gutters">
                           <div class="col-lg-1 col-3">
-                              <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid" width="65px" height="65px">
+                              <img src="<%= postcomment.user.profileimage %>" class="img-fluid" width="65px" height="65px">
                           </div>
                           <div class="col-lg-11 col-9">
                               <p>
                                 <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">
-                                <%= postcomment.user.email %>
+                                <%= postcomment.user.name %>
                                 </span> 
                                 <span style="margin-left: 5px; color: #9B9B9B; font-size: 10px; font-weight: 500;">11:59pm</span><br>
                                 <span style="margin-left: 10px; color: #9B9B9B; font-size: 11px;">
@@ -599,54 +615,48 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
         <div class="col-lg-12">
           <div class="row">
             <div class="col-lg-12">
-              <p class="topcompoststop">Latest Community Poll</p>
+              <p class="topcompoststop">Latest Blogs</p>
             </div>
           </div>
 
           <div class="row">
             <div class="holdpollholder">
-            <div class="col-lg-12">
+            
+        <% @someblogs.find_all do |blog| %>
+          <!-- Post begin -->
+            <div class="col-lg-12" style="margin-top: 20px;">
               <div class="row no-gutters">
                 <div class="col-lg-2 col-3">
-                  <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+                  <img src="<%= blog.user.profileimage %>" class="img-fluid" style="border-radius: 10px;">
                 </div>
                 <div class="col-lg-10 col-9">
-                  <span style="margin-left: 10px; color: #f17100; font-size: 12px; font-weight: 600;">
-                  Et elit et incididunt voluptate deserunt ad est est.
+                  <span style="margin-left: 10px; color: #4A4A4A; font-size: 12px; font-weight: 600;">
+                  <%= blog.title %>
                 </span>
                 </div>
               </div>
 
               <div class="row">
+                <!-- Post Body -->
                 <div class="col-lg-12">
-                  <div class="holdpollbtns">
-                    <label class="labelcontainer">Elder Mireku
-                    <input type="radio" name="con[answer]" onclick="submityourPoll()" id="con_answer" value="eldermireku">
-                    <span class="checkmark"></span>
-                    </label>
-
-                    <label class="labelcontainer">Lizzy Rockson
-                    <input type="radio" name="con[answer]" onclick="submityourPoll()" id="con_answer" value="lizzyrockson">
-                    <span class="checkmark"></span>
-                    </label>
-
-                    <label class="labelcontainer">Joe Mettle
-                    <input type="radio" name="con[answer]" onclick="submityourPoll()" id="con_answer" value="joemettle">
-                    <span class="checkmark"></span>
-                    </label>
-
-                    <label class="labelcontainer">Don Moen
-                    <input type="radio" name="con[answer]" onclick="submityourPoll()" id="con_answer" value="donmoen">
-                    <span class="checkmark"></span>
-                    </label>
-                      <p id="submypoller" style="text-align: center; display: none;">
-                      <button class="btn btn-primary pollsubmit" style="margin-top: 7px;">Submit</button>
-                      </p>
-                  </div>
+                    <img src="<%= blog.blogimage %>" class="" height="100px" width="100%" style="margin-top: 5px;">
                 </div>
-              </div>
+
+                 <!-- Post Action -->
+                <div class="col-lg-12">
+                  <p>
+                    <a href="/blogs/<%= blog.id %>" class="btn btn-primary blogpostreadbutton" style="width: 100%;">Read Post</a>
+                  </p>
+                </div>
+
+              </div>  
 
             </div>
+             <!-- Post end -->
+
+             <% end %>
+
+
           </div>
           </div>
 
@@ -659,7 +669,7 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
           <div class="row">
             <div class="holdmembersholder">
 
-              <% User.all.find_each do |user| %>
+              <% User.last(10).find_all do |user| %>
 
   
     
@@ -667,11 +677,11 @@ box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.3);
     <div class="col-lg-12" id="user-<%= user.id %>" style="margin-top: 20px;">
       <div class="row no-gutters">
         <div class="col-lg-2 col-2">
-          <img src="https://res.cloudinary.com/nikasemo/image/upload/v1577829071/IMG_20190827_142457_6_u0y2lp.png" class="img-fluid">
+          <img src="<%= user.profileimage %>" class="img-fluid">
         </div>
         <div class="col-lg-6 col-6" style="line-height: 14px;">
           <span style="margin-left: 10px; color: #000000; font-size: 12px; font-weight: 600;">
-          Bernard Lomo <%= user.id %>
+          <%= user.name %>
         </span>
         <span style="margin-left: 10px; color: #dddddd; font-size: 9px; font-weight: 400;">
           Founder of Africa

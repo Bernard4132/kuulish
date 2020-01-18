@@ -1,0 +1,137 @@
+
+<style type="text/css">
+	
+	#sidebar {
+	  display: none;
+	}
+
+	.headhold {
+		background-color: #4a4a4a;
+		padding: 30px;
+		border-radius: 20px;
+		color: white;
+	}
+
+	.bogges {
+		background-color: #ffffff;
+		border-radius: 10px;
+		padding: 10px;
+		margin-bottom: 10px;
+		 -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+	}
+
+	.actionrow {
+		border-radius: 10px;
+		padding: 10px;
+		margin-bottom: 10px;
+		 -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+	}
+
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="headhold">
+				<h4>Welcome, <%= current_user.name %>.</h4>
+				<p style="color: white;">Manage all groups, users and blogs from here. For other admin tasks, you will see special action buttons on posts, comments, blogs and groups.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="row actionrow" style="margin-top: 20px; margin-bottom: 20px; padding: 20px; background-color: white;">
+		<div class="col-lg-6">
+			<div class="createhold1">
+				<span style="font-weight: 500;">Create a group, a blog post, or assign a role to a user.</span>
+			</div>
+		</div>
+		<div class="col-lg-2">
+			<p style="width: 100%;">
+			<a href="/groups/new" class="btn btn-primary" style="width: 100%;">Create Group</a>
+			</p>
+		</div>
+		<div class="col-lg-2">
+			<p style="width: 100%;">
+			<a href="/blogs/new" class="btn btn-primary" style="width: 100%;">Create Blogs</a>
+			</p>
+		</div>
+		<div class="col-lg-2">
+			<p style="width: 100%;">
+			<a href="/handers/new" class="btn btn-primary" style="width: 100%;">Role Asigner</a>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="headhold2">
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-4">
+			<h5>All Blogs</h5>
+			<div class="row">
+				<% @blogs.find_all do |blog| %>
+				<div class="col-lg-12">
+					<div class="bogges">
+						<%= blog.title %><br>
+						<p style="text-align: right; margin-top: 10px;">
+						<%= link_to 'Open', blog, :style => "color: #0080ff; font-weight: 500; font-size: 12px;" %> | 
+				        <%= link_to 'Edit', edit_blog_path(blog), :style => "color: #0080ff; font-weight: 500; font-size: 12px;" %> | 
+				        <%= link_to 'Delete', blog, :style => "color: red; font-weight: 500; font-size: 12px;", method: :delete, data: { confirm: 'Are you sure?' } %>
+				    	</p>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<h5>All Groups</h5>
+			<div class="row">
+				<% @groups.find_all do |group| %>
+				<div class="col-lg-12">
+					<div class="bogges">
+						<%= group.name %>
+						<p style="text-align: right; margin-top: 10px;">
+						<%= link_to 'Open', group, :style => "color: #0080ff; font-weight: 500; font-size: 12px;" %> | 
+				        <%= link_to 'Edit', edit_group_path(group), :style => "color: #0080ff; font-weight: 500; font-size: 12px;" %> | 
+				        <%= link_to 'Delete', group, :style => "color: red; font-weight: 500; font-size: 12px;", method: :delete, data: { confirm: 'Are you sure?' } %>
+				    	</p>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<h5>All Users</h5>
+			<div class="row">
+				<% @users.find_all do |user| %>
+				<div class="col-lg-12">
+					<div class="bogges">
+						<%= user.email %>
+						<p style="text-align: right; margin-top: 10px;">
+						<%= link_to 'Open', user, :style => "color: #0080ff; font-weight: 500; font-size: 12px;" %> | 
+				        <%= link_to 'Edit', edit_user_path(user), :style => "color: #0080ff; font-weight: 500; font-size: 12px;" %> | 
+				        <%= link_to 'Delete', user, :style => "color: red; font-weight: 500; font-size: 12px;", method: :delete, data: { confirm: 'Are you sure?' } %>
+				    	</p>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div>
+
+	</div>
+
+</div>

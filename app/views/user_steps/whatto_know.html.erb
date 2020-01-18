@@ -1,0 +1,55 @@
+<style type="text/css">
+	.holdtheform {
+		background-color: #ffffff;
+		border-radius: 20px;
+		padding: 20px;
+		 -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
+	}
+</style>
+
+<div class="container">
+	<div class="row justify-content-md-center" style="margin-top: 30px;">
+    <div class="col-sm-12 col-md-6 col-md-offset-3">
+    	<p style="text-align: center; margin: 30px;">
+    		<i class="fa fa-4x fa-heart" aria-hidden="true" style="color: #f17100;"></i>
+    		<i class="fa fa-4x fa-smile-o" aria-hidden="true" style="color: #4a4a4a;"></i>
+    	</p>
+    	<div class="holdtheform">
+
+<h1 style="font-size: 25px; text-align: center;color: #f17100; margin-bottom: 20px;">Customizing your experience</h1>
+
+<%= render layout: 'form' do |f| %>
+  <div class="form-group">
+    <label style="color: #f17100; font-size: 12px; font-weight: 500;">What content do you want to see?</label><br />
+    <input type="checkbox" name="user[wdtwtoknow][]" id="user_wdtwtoknow_1" value="dancing"> Dancing<br>
+    <input type="checkbox" name="user[wdtwtoknow][]" id="user_wdtwtoknow_2" value="advice"> Advice videos<br>
+    <input type="checkbox" name="user[wdtwtoknow][]" id="user_wdtwtoknow_3" value="singing"> Singing<br>
+    <input type="checkbox" name="user[wdtwtoknow][]" id="user_wdtwtoknow_4" value="happykids"> Happy Children<br>
+    <input type="checkbox" name="user[wdtwtoknow][]" id="user_wdtwtoknow_5" value="Funactivities"> Fun activities<br>
+  </div>
+
+  <div class="form-group">
+     <label style="color: #f17100; font-size: 12px; font-weight: 500;">Which of these are you most concerned about as a parent?</label><br />   
+    <div class="row">
+    	<div class="col-lg-6">
+    		<input type="checkbox" name="user[parentalfears][]" id="user_parentalfears_1" value="Increasing your Child's Self-Esteem"> Increasing your Child's Self-Esteem<br>
+    		<input type="checkbox" name="user[parentalfears][]" id="user_parentalfears_3" value="Nutrition / Physical Health & Wellness"> Nutrition / Physical Health & Wellness<br>
+    		<input type="checkbox" name="user[parentalfears][]" id="user_parentalfears_5" value="Drug & Alcohol Awareness"> Drug & Alcohol Awareness<br>
+    		<input type="checkbox" name="user[parentalfears][]" id="user_parentalfears_7" value="Technology / Social Networking / Internet Safety"> Technology / Social Networking / Internet Safety<br>
+    	</div>
+    	<div class="col-lg-6">
+    		<input type="checkbox" name="user[parentalfears][]" id="user_parentalfears_2" value="Recognizing & Dealing with Bullying"> Recognizing & Dealing with Bullying<br>
+    		<input type="checkbox" name="user[parentalfears][]" id="user_parentalfears_4" value="Gang Awareness & Personal Safety"> Gang Awareness & Personal Safety<br>
+    		<input type="checkbox" name="user[parentalfears][]" id="user_parentalfears_6" value="How to read to your child"> How to read to your child<br>
+    	</div>
+    </div>
+  </div>
+<% end %>
+
+</div>
+</div>
+</div>
+</div>
+

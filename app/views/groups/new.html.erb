@@ -1,5 +1,25 @@
-<h1>New Group</h1>
 
-<%= render 'form', group: @group %>
+<style type="text/css">
+	
+	#sidebar {
+	  display: none;
+	}
 
-<%= link_to 'Back', groups_path %>
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-5">
+			<h4>Create New Group</h4>
+
+			<%= render 'form', group: @group %>
+
+			<% if current_user.has_role?(:blogwriter) %>
+			<%= link_to 'Back', groups_path %> | <a href="/admindashboard">Admin</a>
+			<% elsif current_user.has_role?(:superadmin) %>
+			<%= link_to 'Back', groups_path %> | <a href="/admindashboard">Admin</a>
+			<% end %>
+			
+		</div>
+	</div>
+</div>
