@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :paints
   resources :user_steps
   resources :handers
   resources :blogcomments

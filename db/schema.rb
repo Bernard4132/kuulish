@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200118065244) do
+ActiveRecord::Schema.define(version: 20200125193734) do
 
   create_table "blogcomments", force: :cascade do |t|
     t.text     "body"
@@ -82,6 +82,20 @@ ActiveRecord::Schema.define(version: 20200118065244) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "paints", force: :cascade do |t|
+    t.text     "hometitle"
+    t.text     "homedescription"
+    t.string   "sutitle"
+    t.text     "sudescription"
+    t.string   "sitext"
+    t.text     "sidescription"
+    t.string   "homeimage"
+    t.string   "siimage"
+    t.string   "suimage"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "postcomments", force: :cascade do |t|

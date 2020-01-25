@@ -1,0 +1,72 @@
+<%= form_for(paint) do |f| %>
+  <% if paint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(paint.errors.count, "error") %> prohibited this paint from being saved:</h2>
+
+      <ul>
+      <% paint.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <hr>
+  <h3>Home Title</h3>
+
+  <div class="form-group">
+    <%= f.label :hometitle %>
+    <%= f.text_area :hometitle , :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :homedescription %>
+    <%= f.text_area :homedescription , :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :homeimage %>
+    <%= f.file_field :homeimage , :class => "form-control" %>
+  </div>
+
+  <hr>
+  <h3>Sign Up</h3>
+
+  <div class="form-group">
+    <%= f.label :sutitle %>
+    <%= f.text_field :sutitle , :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sudescription %>
+    <%= f.text_area :sudescription , :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :suimage %>
+    <%= f.file_field :suimage , :class => "form-control" %>
+  </div>
+
+<hr>
+<h3>Sign In</h3>
+  <div class="form-group">
+    <%= f.label :sitext %>
+    <%= f.text_field :sitext , :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sidescription %>
+    <%= f.text_area :sidescription , :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :siimage %>
+    <%= f.file_field :siimage , :class => "form-control" %>
+  </div>
+
+  
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

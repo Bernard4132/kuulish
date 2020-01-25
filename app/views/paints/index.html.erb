@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Paints</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hometitle</th>
+      <th>Homedescription</th>
+      <th>Sutitle</th>
+      <th>Sudescription</th>
+      <th>Sitext</th>
+      <th>Sidescription</th>
+      <th>Homeimage</th>
+      <th>Siimage</th>
+      <th>Suimage</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @paints.each do |paint| %>
+      <tr>
+        <td><%= paint.hometitle %></td>
+        <td><%= paint.homedescription %></td>
+        <td><%= paint.sutitle %></td>
+        <td><%= paint.sudescription %></td>
+        <td><%= paint.sitext %></td>
+        <td><%= paint.sidescription %></td>
+        <td><%= paint.homeimage %></td>
+        <td><%= paint.siimage %></td>
+        <td><%= paint.suimage %></td>
+        <td><%= link_to 'Show', paint %></td>
+        <td><%= link_to 'Edit', edit_paint_path(paint) %></td>
+        <td><%= link_to 'Destroy', paint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Paint', new_paint_path %>

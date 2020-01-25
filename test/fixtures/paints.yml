@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hometitle: MyText
+  homedescription: MyText
+  sutitle: MyString
+  sudescription: MyText
+  sitext: MyString
+  sidescription: MyText
+  homeimage: MyString
+  siimage: MyString
+  suimage: MyString
+
+two:
+  hometitle: MyText
+  homedescription: MyText
+  sutitle: MyString
+  sudescription: MyText
+  sitext: MyString
+  sidescription: MyText
+  homeimage: MyString
+  siimage: MyString
+  suimage: MyString
